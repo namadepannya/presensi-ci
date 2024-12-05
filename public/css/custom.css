@@ -1,0 +1,7 @@
+
+.badge-pending {
+    background-color: orange;
+    color: black !important; /* Mengubah teks menjadi hitam */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
