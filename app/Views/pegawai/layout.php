@@ -258,7 +258,10 @@
 
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script>
+    // seetalert berhasil
     $(function() {
         <?php if(session()->has('gagal')) { ?>
         Swal.fire({
@@ -267,6 +270,26 @@
             text: "<?= session()->get('gagal') ?>",
         });
         <?php } ?>
+    });
+
+    //sweet alert konfirmasi delete
+    $('.tombol-hapus').on('click', function() {
+        var getLink = $(this).attr('href');
+
+        Swal.fire({
+            title: "Nyaan di Apus?",
+            text: "Mun Geus di Apus Moal Matak Balik Deui!",
+            icon: "KADE !!!",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Heeh Apus Weh!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = getLink
+            }
+        });
+        return false;
     });
     </script>
 
