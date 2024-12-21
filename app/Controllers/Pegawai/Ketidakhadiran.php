@@ -14,6 +14,8 @@ class Ketidakhadiran extends BaseController
         helper(['url','form']);
     }
 
+
+
     public function index()
     {
         $ketidakhadiranModel = new KetidakhadiranModel();
@@ -25,7 +27,6 @@ class Ketidakhadiran extends BaseController
         ];
         return view('pegawai/ketidakhadiran', $data);
     }
-
     public function create()
 {
     $data = [
@@ -198,6 +199,19 @@ public function delete($id)
     session()->setFlashdata('success', 'Data ketidakhadiran berhasil dihapus.');
 
     return redirect()->to(base_url('pegawai/ketidakhadiran'))->with('success', 'Data ketidakhadiran berhasil dihapus');
+}
+
+public function approved($id)
+{
+    $ketidakhadiranModel = new KetidakhadiranModel();
+    $data = ['status' => 'APPROVED'];
+
+    $ketidakhadiranModel->update($id, $data);  // Update status di database
+
+    // Menambahkan pesan sukses
+    session()->setFlashdata('success', 'Status ketidakhadiran berhasil disetujui.');
+
+    return redirect()->to(base_url('pegawai/ketidakhadiran'));
 }
 
     

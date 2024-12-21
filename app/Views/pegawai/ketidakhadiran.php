@@ -8,6 +8,7 @@
 
 <table class="table table-striped" id="datatables">
     <thead>
+        <!-- Pindahkan link ke bagian head atau di luar table -->
         <link rel="stylesheet" href="<?= base_url('css/custom.css') ?>">
         <tr>
             <th>No</th>
@@ -23,52 +24,62 @@
     <?php if($ketidakhadiran) : ?>
     <tbody>
         <?php $no = 1; 
-        foreach($ketidakhadiran as $ketidakhadiran) : ?>
+        foreach($ketidakhadiran as $item) : ?>
         <tr>
             <td> <?= $no++ ?> </td>
-            <td> <?= $ketidakhadiran['keterangan'] ?> </td>
-            <td> <?= $ketidakhadiran['tanggal'] ?> </td>
-            <td> <?= $ketidakhadiran['deskripsi'] ?> </td>
+            <td> <?= $item['keterangan'] ?> </td>
+            <td> <?= $item['tanggal'] ?> </td>
+            <td> <?= $item['deskripsi'] ?> </td>
 
-            <!-- Menampilkan file yang diupload -->
+            <!-- Menampilkan file -->
             <td>
-                <?php if ($ketidakhadiran['file']): ?>
+                <?php if ($item['file']): ?>
                 <?php
-            // Mendapatkan ekstensi file
-            $ext = pathinfo($ketidakhadiran['file'], PATHINFO_EXTENSION);
-            // Menampilkan file jika gambar
-            if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
-                echo '<a href="' . base_url('uploads/' . $ketidakhadiran['file']) . '" target="_blank">
-                <img src="' . base_url('uploads/' . $ketidakhadiran['file']) . '" alt="File" width="70">
-              </a>';
-            } elseif ($ext == 'pdf') {
-                // Jika file adalah PDF, tampilkan ikon PDF atau link untuk membuka
-                echo '<a href="' . base_url('uploads/' . $ketidakhadiran['file']) . '" target="_blank">
-         <img src="' . base_url('assets/images/pdf-icon.png') . '" alt="PDF" width="70">
-     </a>';
-            } else {
-                // Jika file lain, tampilkan nama file
-                echo '<span>File: ' . $ketidakhadiran['file'] . '</span>';
-            }
-        ?>
+                $ext = pathinfo($item['file'], PATHINFO_EXTENSION);
+                if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+                    echo '<a href="' . base_url('uploads/' . $item['file']) . '" target="_blank">
+                    <img src="' . base_url('uploads/' . $item['file']) . '" alt="File" width="70">
+                  </a>';
+                } elseif ($ext == 'pdf') {
+                    echo '<a href="' . base_url('uploads/' . $item['file']) . '" target="_blank">
+             <img src="' . base_url('assets/images/pdf-icon.png') . '" alt="PDF" width="70">
+         </a>';
+                } else {
+                    echo '<span>File: ' . $item['file'] . '</span>';
+                }
+                ?>
                 <?php else: ?>
                 <span>No file uploaded</span>
                 <?php endif; ?>
             </td>
 
-            <!-- Menampilkan status PENDING -->
+            <!-- Status -->
             <td>
-                <?php if ($ketidakhadiran['status'] == 'PENDING'): ?>
-                <span class="badge badge-pending">PENDING</span>
+                <?php if (isset($item['status'])): ?>
+                <?php if (strtolower($item['status']) === 'approved'): ?>
+                <span class="badge bg-success">Approved</span>
+                <?php elseif (strtolower($item['status']) === 'pending'): ?>
+                <span class="badge bg-warning">Pending</span>
+                <?php else: ?>
+                <span class="badge bg-danger">Rejected</span>
+                <?php endif; ?>
+                <?php else: ?>
+                <span class="badge bg-secondary">Status not available</span>
                 <?php endif; ?>
             </td>
 
+            <!-- Aksi -->
             <td>
-                <a href="<?= base_url('pegawai/ketidakhadiran/edit/' . $ketidakhadiran['id']) ?>"
+                <?php if (isset($item['status']) && $item['status'] == 'PENDING'): ?>
+                <a href="<?= base_url('pegawai/ketidakhadiran/edit/' . $item['id']) ?>"
                     class="badge bg-primary">Edit</a>
-                <a href="<?= base_url('pegawai/ketidakhadiran/delete/' . $ketidakhadiran['id']) ?>"
+                <a href="<?= base_url('pegawai/ketidakhadiran/delete/' . $item['id']) ?>"
                     class="badge bg-danger tombol-hapus"
                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                <?php else: ?>
+                <!-- Jika status APPROVED, tidak menampilkan tombol -->
+                <span class="text-muted">---</span>
+                <?php endif; ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -80,7 +91,6 @@
         </tr>
     </tbody>
     <?php endif ; ?>
-
 </table>
 
 <?= $this->endSection() ?>

@@ -21,6 +21,9 @@
         integrity="sha512-tpsEzNMLQS7w9imFSjbEOHdZav3/aObSESAL1y5jyJDoICFF2YwEdAHOPdOr1t+h8hTzar0flphxR76pd0V1zQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- data tables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -42,7 +45,7 @@
     <aside class="sidebar-nav-wrapper">
         <div class="navbar-logo">
             <a href="index.html">
-                <img style="width: 85%;" src="<?= base_url('assets/images/logo/logo-presensi.png') ?>" alt="logo" />
+                <img style="width: 85%;" src="<?= base_url('assets/images/logo/LogoAbsensi.png') ?>" alt="logo" />
             </a>
         </div>
         <nav class="sidebar-nav">
@@ -259,6 +262,15 @@
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- datatables -->
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+    <script>
+    //data tables
+    $(document).ready(function() {
+        $('#datatables').DataTable();
+    });
+    </script>
 
     <script>
     // seetalert berhasil

@@ -5,3 +5,47 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+.custom-badge {
+    display: inline-block;
+    padding: 8px 17px; /* Ukuran badge */
+    border-radius: 25px; /* Membuat sisi tumpul */
+    font-size: 13px; /* Ukuran font */
+    font-weight: bold;
+    color: white; /* Warna tulisan awal */
+    text-decoration: none; /* Menghilangkan underline */
+    transition: all 0.3s ease-in-out; /* Animasi saat hover */
+}
+
+.custom-badge.bg-success {
+    background-color: #28a745; /* Warna latar hijau */
+}
+
+.custom-badge:hover {
+    color: black; /* Warna tulisan saat di-hover */
+    background-color: #218838; /* Sedikit lebih gelap saat hover */
+    text-decoration: none; /* Tetap tanpa underline */
+}
+
+.status-approved {
+    font-size: 18px; /* Ukuran font lebih besar */
+    color: green; /* Warna hijau */
+    font-weight: bold; /* Membuat teks lebih tebal */
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.badge-warning {
+    background-color: orange;
+    color: white;
+}
+
+.badge-success {
+    background-color: green;
+    color: white;
+}

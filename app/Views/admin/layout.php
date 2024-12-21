@@ -44,12 +44,12 @@
     <aside class="sidebar-nav-wrapper">
         <div class="navbar-logo">
             <a href="index.html">
-                <img style="width: 85%;" src="<?= base_url('assets/images/logo/logo-presensi.png') ?>" alt="logo" />
+                <img style="width: 85%;" src="<?= base_url('assets/images/logo/LogoAbsensi.png') ?>" alt="logo" />
             </a>
         </div>
         <nav class="sidebar-nav">
             <ul>
-                <li class="nav-item mb-2">
+                <li class="<?= base_url('admin/home') ?>">
                     <a href="invoice.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-home">
@@ -125,7 +125,7 @@
                     </ul>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="invoice.html">
+                    <a href="<?= base_url('admin/ketidakhadiran') ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-user-off">
@@ -139,7 +139,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="<?= base_url('/') ?>">
+                    <a href="<?= base_url('logout') ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2">

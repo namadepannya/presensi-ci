@@ -21,7 +21,8 @@
         integrity="sha512-tpsEzNMLQS7w9imFSjbEOHdZav3/aObSESAL1y5jyJDoICFF2YwEdAHOPdOr1t+h8hTzar0flphxR76pd0V1zQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+    <!-- data tables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 
 </head>
 
@@ -265,6 +266,21 @@
     <script src=" <?= base_url('assets/js/moment.min.js') ?>  "></script>
     <script src=" <?= base_url(' assets/js/fullcalendar.js') ?> "></script>
     <script src=" <?= base_url('assets/js/world-merc.js') ?>  "></script> -->
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- datatables -->
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+    <script>
+    //data tables
+    $(document).ready(function() {
+        $('#datatables').DataTable();
+    });
+    </script>
 </body>
 
 </html>
